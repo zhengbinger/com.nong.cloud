@@ -4,3 +4,8 @@ server:
 spring:
   application:
     name: customer-order
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10000/eureka/

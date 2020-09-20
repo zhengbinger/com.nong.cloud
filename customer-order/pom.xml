@@ -6,12 +6,15 @@
         <groupId>com.nong.cloud</groupId>
         <artifactId>com.nong.cloud</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath/>
     </parent>
 
     <artifactId>customer-order</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.nong.cloud</groupId>
             <artifactId>cloud-starter</artifactId>

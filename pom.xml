@@ -12,6 +12,7 @@
     <modules>
         <module>provider-payment</module>
         <module>customer-order</module>
+        <module>server-eureka</module>
     </modules>
 
     <properties>

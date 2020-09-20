@@ -14,7 +14,7 @@
         select * from payment where id = #{id};
     </select>
 
-    <insert id="save" parameterType="com.nong.cloud.payment.entities.Payment">
+    <insert id="save" parameterType="com.nong.cloud.starter.entities.Payment">
         insert into payment(serial)  values(#{serial} );
     </insert>
 
