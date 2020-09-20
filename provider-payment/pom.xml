@@ -12,6 +12,10 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-netflix-eureka-client</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.nong.cloud</groupId>
             <artifactId>cloud-starter</artifactId>
             <version>${project.version}</version>
