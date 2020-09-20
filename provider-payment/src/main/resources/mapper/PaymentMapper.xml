@@ -3,19 +3,19 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.nong.cloud.providerpayment.entities.StudentMappers">
+<mapper namespace="com.nong.cloud.payment.repository.PaymentRepository">
 
-    <resultMap id="BaseResult" type="Payment" >
-        <id property="id" column="id" />
+    <resultMap id="BaseResult" type="Payment">
+        <id property="id" column="id"/>
         <result property="serial" column="serial"/>
     </resultMap>
 
     <select id="getByPrimaryKey" resultMap="BaseResult" parameterType="long">
-        select * from payment where id = ${id};
+        select * from payment where id = #{id};
     </select>
 
-    <insert id="save">
-        insert into payment  values();
+    <insert id="save" parameterType="com.nong.cloud.payment.entities.Payment">
+        insert into payment(serial)  values(#{serial} );
     </insert>
 
 </mapper>

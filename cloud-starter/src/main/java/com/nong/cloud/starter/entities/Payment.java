@@ -1,4 +1,4 @@
-package com.nong.cloud.providerpayment.entities;
+package com.nong.cloud.starter.entities;
 
 import lombok.Data;
 

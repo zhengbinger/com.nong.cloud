@@ -11,9 +11,11 @@
 
     <modules>
         <module>provider-payment</module>
+        <module>customer-order</module>
     </modules>
 
     <properties>
+        <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compoler.source>1.8</maven.compoler.source>
         <maven.compoler.target>1.8</maven.compoler.target>
@@ -62,8 +64,8 @@
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
-                <scope>runtime</scope>
                 <version>${mysql.version}</version>
+                <scope>runtime</scope>
             </dependency>
             <dependency>
                 <groupId>com.alibaba</groupId>
