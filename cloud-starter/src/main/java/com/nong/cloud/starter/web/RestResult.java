@@ -23,6 +23,8 @@ public class RestResult<T> {
   /** 响应数据，此处使用泛型，可通用 */
   private T data;
 
+  public RestResult() {}
+
   public RestResult(T data) {
     this(REQUEST_SUCCESS_CODE, REQUEST_SUCCESS_MESSAGE, data);
   }

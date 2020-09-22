@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: provider-payment
+  profiles:
+    active: 8001
 
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
@@ -13,5 +15,3 @@ spring:
 mybatis:
   mapper-locations: classpath*:mapper/*.xml
   type-aliases-package: com.nong.cloud.starter.entities
-
-

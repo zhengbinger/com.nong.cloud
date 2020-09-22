@@ -4,6 +4,7 @@ import com.nong.cloud.payment.service.PaymentService;
 import com.nong.cloud.starter.entities.Payment;
 import com.nong.cloud.starter.web.RestResult;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -16,9 +17,12 @@ public class PaymentController {
 
   @Autowired private PaymentService paymentService;
 
+  @Value("${server.port}")
+  private String serverPort;
+
   @GetMapping("payment/{id}")
-  public RestResult getById(@PathVariable long id) {
-    return RestResult.success(paymentService.getByPrimaryKey(id));
+  public RestResult<Payment> getById(@PathVariable long id) {
+    return new RestResult(200, serverPort, paymentService.getByPrimaryKey(id));
   }
 
   @PostMapping("payment/add")

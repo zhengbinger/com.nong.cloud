@@ -18,7 +18,8 @@ public class PaymentController {
 
   @Autowired private RestTemplate restTemplate;
 
-  public static final String PAYMENT_URL = "http://192.168.1.4:8001/";
+  //  public static final String PAYMENT_URL = "http://192.168.1.4:8001/";
+  public static final String PAYMENT_URL = "http://PROVIDER-PAYMENT/";
 
   @GetMapping("/consumer/payment/{id}")
   public RestResult getById(@PathVariable long id) {
