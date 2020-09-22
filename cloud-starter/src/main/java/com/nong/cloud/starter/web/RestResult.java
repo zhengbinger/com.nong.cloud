@@ -7,7 +7,7 @@ package com.nong.cloud.starter.web;
  * @date: 2020/9/19
  * @email: mydreambing@126.com
  */
-public class RestResult {
+public class RestResult<T> {
 
   /** 默认请求成功code为200 */
   public static final int REQUEST_SUCCESS_CODE = 200;
@@ -21,9 +21,9 @@ public class RestResult {
   private String message;
 
   /** 响应数据，此处使用泛型，可通用 */
-  private Object data;
+  private T data;
 
-  public RestResult(Object data) {
+  public RestResult(T data) {
     this(REQUEST_SUCCESS_CODE, REQUEST_SUCCESS_MESSAGE, data);
   }
 
@@ -37,7 +37,7 @@ public class RestResult {
     this(code, message, null);
   }
 
-  public RestResult(int code, String message, Object data) {
+  public RestResult(int code, String message, T data) {
     this.code = code;
     this.message = message;
     this.data = data;
@@ -48,8 +48,8 @@ public class RestResult {
    *
    * @return RestResult<T>
    */
-  public static RestResult success() {
-    return new RestResult(null);
+  public static <T> RestResult<T> success() {
+    return new RestResult<T>(null);
   }
 
   /**
@@ -58,8 +58,8 @@ public class RestResult {
    * @param data 响应数据
    * @return RestResult<T>
    */
-  public static RestResult success(Object data) {
-    return new RestResult(data);
+  public static <T> RestResult<T> success(T data) {
+    return new RestResult<T>(data);
   }
 
   /**
@@ -93,7 +93,7 @@ public class RestResult {
     return data;
   }
 
-  public void setData(Object data) {
+  public void setData(T data) {
     this.data = data;
   }
 }
