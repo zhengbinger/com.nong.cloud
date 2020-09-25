@@ -179,8 +179,34 @@ spring.security.user.password=root
 
 ## 集群的注册原理
 互相注册，相互观察
+
+## actuator
+
+### 主机名修改
+```
+eureka.innstance.instance-id: 
+```
+
+### 访问信息带IP  
+```
+eureka.innstance.prefer-ip-address: true
+```
+
+## Discovery  
+对于注册进Eureka的微服务，可以通过服务发现获得服务的信息
+
+## Eureka 自我保护
+
+保护模式，主要用于一组客户端和Eureka Server 之间存在网络分区场景下的保护，一旦你进入保护模式，Eureka Server 将会尝试保护其服务注册表中的信息，不再删除注册表中的数据，也就是不会注销任何微服务
     
-   
+服务不可用之后，eureka server 不会立刻清楚
+CAP  理论中  基于 AP的实现
+```
+eureka.server.enable.self-preservation= true/false     开关自我保护配置
+eureka.server.eviction-interval-time-in-ms = 90        默认清理服务的时间单位【毫秒】默认 90
+eureka.server.lease-renewal-interal-in-second = 1      eureka  客户端向服务端发送心跳的间隔 单位【秒】默认30
+eureka.server.lease-exporation-duration-in-seconds = 2 eureka 服务端在收到最后一次心跳后等待时间上线，单位【秒】默认90 超时将剔除服务。
+```  
     
     
 

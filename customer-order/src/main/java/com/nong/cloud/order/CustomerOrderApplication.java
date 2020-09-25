@@ -15,6 +15,11 @@ public class CustomerOrderApplication {
     SpringApplication.run(CustomerOrderApplication.class, args);
   }
 
+  /**
+   * 实现客户端负载均衡 采用默认算法 轮训
+   *
+   * @return
+   */
   @Bean
   @LoadBalanced
   public RestTemplate restTemplate() {

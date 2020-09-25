@@ -5,7 +5,11 @@ import com.nong.cloud.starter.entities.Payment;
 import com.nong.cloud.starter.web.RestResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @author: zhengbing
@@ -16,6 +20,8 @@ import org.springframework.web.bind.annotation.*;
 public class PaymentController {
 
   @Autowired private PaymentService paymentService;
+
+  @Autowired private DiscoveryClient discoveryClient;
 
   @Value("${server.port}")
   private String serverPort;
@@ -33,5 +39,21 @@ public class PaymentController {
     } else {
       return RestResult.fail(100, "新增失败");
     }
+  }
+
+  @GetMapping("/payment/discovery")
+  public Object getService() {
+    List<String> applications = discoveryClient.getServices();
+
+    StringBuffer results = new StringBuffer();
+    for (String service : applications) {
+      System.out.println(service + "::: instance");
+    }
+
+    List<ServiceInstance> instances = discoveryClient.getInstances("PROVIDER-PAYMENT");
+    for (ServiceInstance instance : instances) {
+      System.out.println(instance.getHost() + " " + instance.getPort() + " " + instance.getUri());
+    }
+    return this.discoveryClient;
   }
 }

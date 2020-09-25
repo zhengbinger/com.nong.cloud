@@ -4,10 +4,17 @@ server:
 spring:
   profiles:
     active: eureka1
+  application:
+    name: eureka-server
 
 eureka:
+  server:
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 2000
   instance:
     hostname: localhost
+    lease-expiration-duration-in-seconds: 1
+    lease-renewal-interval-in-seconds: 1
   client:
     register-with-eureka: true
     fetch-registry: false
