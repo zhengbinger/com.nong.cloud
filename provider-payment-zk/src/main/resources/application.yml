@@ -1,0 +1,8 @@
+server:
+  port: 8008
+spring:
+  application:
+    name: provider-payment-zk
+  cloud:
+    zookeeper:
+      connect-string: localhost:2181
