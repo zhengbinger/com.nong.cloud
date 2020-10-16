@@ -3,6 +3,7 @@ package com.nong.cloud.order.controller;
 import com.nong.cloud.starter.entities.Payment;
 import com.nong.cloud.starter.web.RestResult;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,5 +30,27 @@ public class PaymentController {
   @GetMapping("/consumer/payment/add")
   public RestResult save(Payment payment) {
     return restTemplate.postForObject(PAYMENT_URL + "payment/add", payment, RestResult.class);
+  }
+
+  @GetMapping("/consumer/payment/entity/{id}")
+  public RestResult getByIdEntity(@PathVariable long id) {
+    ResponseEntity<RestResult> entity =
+        restTemplate.getForEntity(PAYMENT_URL + "payment/" + id, RestResult.class);
+    if (entity.getStatusCode().is2xxSuccessful()) {
+      return entity.getBody();
+    } else {
+      return RestResult.fail(444, "操作失败");
+    }
+  }
+
+  @GetMapping("/consumer/payment/entity/add")
+  public RestResult saveEntity(Payment payment) {
+    ResponseEntity<RestResult> entity =
+        restTemplate.postForEntity(PAYMENT_URL + "payment/add", payment, RestResult.class);
+    if (entity.getStatusCode().is2xxSuccessful()) {
+      return entity.getBody();
+    } else {
+      return RestResult.fail(444, "操作失败");
+    }
   }
 }
