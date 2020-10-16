@@ -15,6 +15,8 @@
         <module>server-eureka</module>
         <module>customer-order-zk</module>
         <module>provider-payment-zk</module>
+        <module>provider-payment-consul</module>
+        <module>customer-order-consul</module>
     </modules>
 
     <properties>
