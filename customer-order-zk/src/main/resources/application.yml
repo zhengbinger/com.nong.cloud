@@ -1,2 +1,9 @@
 server:
-  port:
+  port: 80
+
+spring:
+  application:
+    name: customer-order-zk
+  cloud:
+    zookeeper:
+      connect-string: localhost:2181

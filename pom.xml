@@ -13,7 +13,6 @@
         <module>provider-payment</module>
         <module>customer-order</module>
         <module>server-eureka</module>
-        <module>server-zookeeper</module>
         <module>customer-order-zk</module>
         <module>provider-payment-zk</module>
     </modules>
