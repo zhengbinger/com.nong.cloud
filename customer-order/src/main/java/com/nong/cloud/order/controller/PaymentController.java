@@ -1,13 +1,19 @@
 package com.nong.cloud.order.controller;
 
+import com.nong.cloud.order.lb.MyLoadBalance;
 import com.nong.cloud.starter.entities.Payment;
 import com.nong.cloud.starter.web.RestResult;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+
+import java.net.URI;
+import java.util.List;
 
 /**
  * @author: zhengbing
@@ -18,6 +24,10 @@ import org.springframework.web.client.RestTemplate;
 public class PaymentController {
 
   @Autowired private RestTemplate restTemplate;
+
+  @Autowired private DiscoveryClient discoveryClient;
+
+  @Autowired private MyLoadBalance myLoadBalance;
 
   //  public static final String PAYMENT_URL = "http://192.168.1.4:8001/";
   public static final String PAYMENT_URL = "http://PROVIDER-PAYMENT/";
@@ -52,5 +62,17 @@ public class PaymentController {
     } else {
       return RestResult.fail(444, "操作失败");
     }
+  }
+
+  @GetMapping(value = "consumer/payment/lb")
+  public String getPaymentUrlLoadBalance() {
+    List<ServiceInstance> list = discoveryClient.getInstances("PROVIDER-PAYMENT");
+
+    if (null != list && list.size() > 0) {
+      ServiceInstance serviceInstance = myLoadBalance.instance(list);
+      URI uri = serviceInstance.getUri();
+      return restTemplate.getForObject(uri + "payment/lb", String.class);
+    }
+    return null;
   }
 }

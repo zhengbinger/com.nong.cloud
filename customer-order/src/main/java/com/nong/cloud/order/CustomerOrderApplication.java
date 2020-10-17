@@ -3,7 +3,6 @@ package com.nong.cloud.order;
 import com.nong.cloud.myrule.MyRibbonRule;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.context.annotation.Bean;
@@ -24,7 +23,7 @@ public class CustomerOrderApplication {
    * @return
    */
   @Bean
-  @LoadBalanced
+  //  @LoadBalanced
   public RestTemplate restTemplate() {
     return new RestTemplate();
   }
