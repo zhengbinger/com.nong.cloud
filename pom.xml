@@ -18,6 +18,8 @@
         <module>provider-payment-consul</module>
         <module>customer-order-consul</module>
         <module>customer-order-feign</module>
+        <module>provider-payment-hystrix</module>
+        <module>customer-order-feign-hystrix</module>
     </modules>
 
     <properties>
