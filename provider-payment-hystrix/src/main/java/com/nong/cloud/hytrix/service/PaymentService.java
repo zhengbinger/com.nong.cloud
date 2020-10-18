@@ -43,14 +43,14 @@ public class PaymentService {
 
   /** 服务熔断 */
   @HystrixCommand(
-      fallbackMethod = "paymentCricuitBreakerFallback",
+      fallbackMethod = "paymentCircuitBreakerFallback",
       commandProperties = {
-        @HystrixProperty(name = "cricuitBreaker.enabled", value = "true"),
-        @HystrixProperty(name = "cricuitBreaker.requestVolumeThreshold", value = "10"),
-        @HystrixProperty(name = "cricuitBreaker.sleepWindowInMilliseconds", value = "10000"),
-        @HystrixProperty(name = "cricuitBreaker.errorThresholdPercentage", value = "60"),
+        @HystrixProperty(name = "circuitBreaker.enabled", value = "true"),
+        @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "10"),
+        @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "10000"),
+        @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "60"),
       })
-  public String paymentCricuitBreaker(@PathVariable("id") long id) {
+  public String paymentCircuitBreaker(@PathVariable("id") long id) {
     if (id < 0) {
       throw new RuntimeException("****** id 不能负数");
     }
@@ -58,7 +58,7 @@ public class PaymentService {
     return Thread.currentThread().getName() + "\t 调用成功，流水号是：" + serialNumbner;
   }
 
-  public String paymentCricuitBreakerFallback(@PathVariable("id") long id) {
+  public String paymentCircuitBreakerFallback(@PathVariable("id") long id) {
     return "出现熔断！！！";
   }
 }

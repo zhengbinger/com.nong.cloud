@@ -33,9 +33,9 @@ public class PaymentController {
     return paymentService.paymentInfo_TimeOut(id);
   }
 
-  @GetMapping(value = "payment/cricuit/{id}")
-  public String paymentCricuitBreaker(@PathVariable("id") long id) {
+  @GetMapping(value = "payment/circuit/{id}")
+  public String paymentCircuitBreaker(@PathVariable("id") long id) {
     log.info(id + " 进入熔断接口！！！");
-    return paymentService.paymentCricuitBreaker(id);
+    return paymentService.paymentCircuitBreaker(id);
   }
 }

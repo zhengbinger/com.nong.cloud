@@ -20,6 +20,7 @@
         <module>customer-order-feign</module>
         <module>provider-payment-hystrix</module>
         <module>customer-order-feign-hystrix</module>
+        <module>customer-hystrix-dashboard</module>
     </modules>
 
     <properties>
