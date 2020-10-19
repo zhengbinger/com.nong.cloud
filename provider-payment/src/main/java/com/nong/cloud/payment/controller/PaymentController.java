@@ -26,12 +26,12 @@ public class PaymentController {
   @Value("${server.port}")
   private String serverPort;
 
-  @GetMapping("payment/{id}")
+  @GetMapping("/payment/get/{id}")
   public RestResult<Payment> getById(@PathVariable long id) {
     return new RestResult(200, serverPort, paymentService.getByPrimaryKey(id));
   }
 
-  @PostMapping("payment/add")
+  @PostMapping("/payment/add")
   public RestResult addPayment(@RequestBody Payment payment) {
     int add = paymentService.save(payment);
     if (add > 0) {
@@ -57,12 +57,12 @@ public class PaymentController {
     return this.discoveryClient;
   }
 
-  @GetMapping(value = "payment/lb")
+  @GetMapping(value = "/payment/lb")
   public String getPaymentLB() {
     return serverPort;
   }
 
-  @GetMapping(value = "payment/feign/timeout")
+  @GetMapping(value = "/payment/feign/timeout")
   public String paymentFeignTimeOut() {
     try {
       Thread.sleep(3000);

@@ -1,0 +1,23 @@
+server:
+  port: 9999
+
+spring:
+  application:
+    name: cloud-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: payment_route1
+          uri: lb://PROVIDER-PAYMENT
+          predicates:
+            - Path=/payment/get/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10000/eureka/,http://localhost:10001/eureka/
+  instance:
+    prefer-ip-address: true
