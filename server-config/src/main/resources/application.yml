@@ -11,3 +11,15 @@ spring:
       server:
         git:
           uri: https://github.com/zhengbinger/config-center
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+## 暴露bus相关端点
+management:
+  endpoints:  ## 暴露bus刷新配置的端点
+    web:
+      exposure:
+        include: 'bus-refresh'

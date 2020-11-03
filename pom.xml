@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>cloud-starter</module>
         <module>provider-payment</module>
         <module>customer-order</module>
         <module>server-eureka</module>
@@ -21,9 +22,10 @@
         <module>provider-payment-hystrix</module>
         <module>customer-order-feign-hystrix</module>
         <module>customer-hystrix-dashboard</module>
-        <module>cloud-gateway-gateway</module>
+        <module>server-gateway</module>
         <module>server-config</module>
         <module>cloud-client-server</module>
+        <module>cloud-client-server2</module>
     </modules>
 
     <properties>

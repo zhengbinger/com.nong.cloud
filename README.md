@@ -55,3 +55,16 @@ feign:
 断言（Predicate）  
 过滤（Filter）  
 
+## Spring Cloud Bus 使用可以实现配置的动态刷新
+Spring Cloud Bus 是用来将分布式系统的节点与轻量级消息系统连接起来的框架，它整合了Java 的事件处理机制和消息中间那间功能。
+Spring Cloud Bus 目前只支持 RabbitMQ 和 Kafka
+
+### 基本原理
+ConfigClient 实例都监听MQ中的同一个topic (默认是 springCloudBus)。当一个服务刷新数据的时候，它会吧这个信息烦恼歌如到Topic 中去，
+这样其他监听同一个Topic的服务就能得到通知，让后去更新自身的配置
+
+http://localhost:3344/actual/bus/refresh
+http://localhost:3344/actual/bus/refresh/config-client:3355
+
+
+
