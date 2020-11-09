@@ -23,7 +23,7 @@ import java.util.List;
 @RestController
 public class PaymentController {
 
-  @Autowired private RestTemplate restTemplate;
+  @Autowired RestTemplate restTemplate;
 
   @Autowired private DiscoveryClient discoveryClient;
 
@@ -72,6 +72,18 @@ public class PaymentController {
       ServiceInstance serviceInstance = myLoadBalance.instance(list);
       URI uri = serviceInstance.getUri();
       return restTemplate.getForObject(uri + "payment/lb", String.class);
+    }
+    return null;
+  }
+
+  @GetMapping(value = "consumer/payment/zipkin")
+  public String paymentZipkin() {
+    List<ServiceInstance> list = discoveryClient.getInstances("PROVIDER-PAYMENT");
+
+    if (null != list && list.size() > 0) {
+      ServiceInstance serviceInstance = myLoadBalance.instance(list);
+      URI uri = serviceInstance.getUri();
+      return restTemplate.getForObject(uri + "payment/zipkin", String.class);
     }
     return null;
   }

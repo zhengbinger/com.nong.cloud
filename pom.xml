@@ -26,6 +26,10 @@
         <module>server-config</module>
         <module>cloud-client-server</module>
         <module>cloud-client-server2</module>
+        <module>cloud-stream-rabbitmq-provider</module>
+        <module>cloud-stream-rabbitmq-consumer1</module>
+        <module>cloud-stream-rabbitmq-consumer2</module>
+        <module>cloudalibaba-provider-payment9001</module>
     </modules>
 
     <properties>
